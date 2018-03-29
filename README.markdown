@@ -10,23 +10,6 @@ two-factor authentication for mobile phones running Google Authenticator.
 + Encode only (no detection/decode).
 + Basic supporting library functions provided (HOTP, PNG image functions) to allow full-cyle demo.
 
-Demo
-====
-
-1. Download repo and compile with `erl -make`
-2. Install Google Authenticator App on your mobile:
-	+ iPhone:  http://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8
-	+ Android: https://market.android.com/details?id=com.google.android.apps.authenticator
-3. Run demo: `qrcode_demo:run().`
-4. Open the generated `qrcode.png` file
-5. Scan the qrcode into the phone.
-6. Ensure server clock is correct.
-7. The value of `qrcode_demo:totp()` should show the same passcode as the phone.
-8. Handle PINs/logins for the second part of the "two factor" according to your application design.
-
-NOTE: This documentation is rather basic as this was open-sourced by specific request!
-
-
 How to use QR Code Encoder with Elixir
 ======================================
 
@@ -34,7 +17,7 @@ Add :qrcode to `mix.deps`
 ::
 
     defp deps do
-      [{:qrcode, github: "SiliconJungles/elixir-qrcode", runtime: false}]
+      [{:qrcode, github: "SiliconJungles/elixir-qrcode"}]
     end
 
 Then run:
@@ -53,9 +36,24 @@ Then, whenever you have this compiled, you should have access to the functions a
      iex(3)> :file.write_file(“example.png”, png)
      :ok
 
-### NOTE
+How to use QR Code Encoder with OTP apps and Distillery
+====
 
-- The repository is forked from https://gitlab.com/Pacodastre/qrcode and https://gitlab.com/tomwilson/qrcode
+Add :qrcode to `mix.deps`
+ ::
 
-- The erlang library works fine with Distillery.
+     defp deps do
+     	[{:qrcode, github: "SiliconJungles/elixir-qrcode"}]
+     end
 
+Add :qrcode to `rel/config.exs`
+ ::
+
+		 release :your_app do
+		  set version: current_version(:your_app)
+		  set applications: [
+		    :runtime_tools,
+		    your_otp_app_1: :permanent,
+		    your_otp_app_2: :permanent,
+		    qrcode: :load
+		  ]
