@@ -53,3 +53,9 @@ Then, whenever you have this compiled, you should have access to the functions a
      iex(3)> :file.write_file(“example.png”, png)
      :ok
 
+### NOTE
+
+- The repository is forked from https://gitlab.com/Pacodastre/qrcode and https://gitlab.com/tomwilson/qrcode
+
+- The erlang library works fine with Distillery.
+
