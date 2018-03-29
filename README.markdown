@@ -47,3 +47,7 @@ Add :qrcode to `mix.deps`
      end
 
 
+Incase, you can't generate png for qrcode, then you need copy the file `qrcode_demo.erl` and `qrcode.hrl` to some where in your mix project - for example: `"src"` directory
+
+And then add `erlc_paths: ["src"],` to your mix.exs file
+
