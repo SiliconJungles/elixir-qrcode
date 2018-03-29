@@ -34,7 +34,7 @@ Add :qrcode to `mix.deps`
 ::
 
     defp deps do
-      [{:qrcode, git: “git@gitlab.com:Pacodastre/qrcode.git”}]
+      [{:qrcode, github: "SiliconJungles/elixir-qrcode", runtime: false}]
     end
 
 Then run:
