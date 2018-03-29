@@ -46,15 +46,4 @@ Add :qrcode to `mix.deps`
        [{:qrcode, github: "SiliconJungles/elixir-qrcode"}]
      end
 
-Add :qrcode to `rel/config.exs`
- ::
 
-     release :your_app do
-       set version: current_version(:your_app)
-       set applications: [
-         :runtime_tools,
-         your_otp_app_1: :permanent,
-         your_otp_app_2: :permanent,
-         qrcode: :load
-       ]
-     end
